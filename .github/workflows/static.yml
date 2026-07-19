@@ -45,10 +45,8 @@ jobs:
 
       run: |
 
-        echo "Listing downloaded files..."
-        ls -R report
-        
         mkdir public
+        cp report/index.html public/index.html
 
     - name: Upload Pages Artifact
 
