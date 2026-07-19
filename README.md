@@ -17,6 +17,22 @@ https://documenter.getpostman.com/view/4012288/TzK2bEa8
 
 ---
 
+📊 Test Execution Report
+
+The latest API automation test report is automatically published and can be viewed here:
+
+Live Report: https://kunjspatel.github.io/API-Testing-Framework/
+
+The project uses GitHub Actions to automate test execution and report publishing:
+
+Executes the Newman API test suite on a Linux GitHub Actions runner.
+Generates an HTML test report using the newman-reporter-htmlextra reporter.
+Uploads the generated report as a GitHub Artifact from the test workflow.
+A separate GitHub Actions workflow downloads the artifact from the completed test run.
+The downloaded report is repackaged and deployed to GitHub Pages, making the latest test results publicly accessible through the live report URL above.
+
+This approach separates test execution from report publishing, providing a clean CI/CD workflow while preserving test artifacts for each workflow run and maintaining
+
 # Prerequisites
 
 Install the following software before running the project.
