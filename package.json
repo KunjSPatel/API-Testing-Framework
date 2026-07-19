@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "test": "bash scripts/run-api-tests.sh"
+        "test": "node scripts/run-api-tests.js"
     },
     "devDependencies": {
         "newman": "^6.x",
