@@ -1,0 +1,64 @@
+name: Publish API Test Report
+
+
+on:
+  workflow_run:
+    workflows: ["API Automation Tests"]
+    types:
+      - completed
+
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+
+jobs:
+
+  deploy-report:
+
+    runs-on: ubuntu-latest
+
+
+    steps:
+
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+
+
+    - name: Download Test Report Artifact
+      uses: actions/download-artifact@v4
+
+      with:
+        name: Newman-API-Test-Report
+        path: report
+
+
+    - name: Prepare Static Site
+
+      run: |
+
+        mkdir public
+
+        cp report/api-test-report.html public/index.html
+
+
+
+    - name: Upload Pages Artifact
+
+      uses: actions/upload-pages-artifact@v3
+
+      with:
+
+        path: public
+
+
+
+    - name: Deploy To GitHub Pages
+
+      uses: actions/deploy-pages@v4
